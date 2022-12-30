@@ -1,0 +1,23 @@
+{
+  "name": "sharenergy",
+  "version": "1.0.0",
+  "description": "Repositório destinado aos interessados em participar do processo seletivo da SHARENERGY 2023/01. As vagas são voltadas para desenvolvimento de aplicações Web e Mobile.",
+  "main": "index.js",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucieneFagundes/desafio-sharenergy-2023-01.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucieneFagundes/desafio-sharenergy-2023-01/issues"
+  },
+  "homepage": "https://github.com/LucieneFagundes/desafio-sharenergy-2023-01#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
