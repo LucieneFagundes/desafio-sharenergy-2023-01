@@ -1,14 +1,17 @@
 import { CreateClientUseCase } from '@application/use-cases/clients-use-case/create-client-use-case';
+import { FindAllClientsUseCase } from '@application/use-cases/clients-use-case/find-all-client-use-case';
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { STATUS_CODES } from 'http';
 import { CreateClientDto } from './dtos/create-client.dto';
 
 @Controller('clients')
 export class ClientController {
-  constructor(private createClient: CreateClientUseCase) {}
+  constructor(private createClient: CreateClientUseCase, private findAll: FindAllClientsUseCase) { }
 
   @Get()
-  async test() {
-    return 'test';
+  async getAll() {
+    const result = await this.findAll.execute();
+    return result
   }
 
   @Post()
@@ -22,6 +25,6 @@ export class ClientController {
       cpf,
     });
 
-    return response;
+    return;
   }
 }

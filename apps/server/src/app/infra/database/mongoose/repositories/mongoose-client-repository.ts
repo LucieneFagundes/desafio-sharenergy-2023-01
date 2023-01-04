@@ -9,7 +9,7 @@ import { Model } from 'mongoose';
 export class MongooseClientRepository implements ClientRepository {
   constructor(
     @InjectModel(Client.name) private clientModel: Model<ClientDocument>,
-  ) {}
+  ) { }
 
   async create(client: Client): Promise<void> {
     await this.clientModel.create(client);
@@ -21,7 +21,7 @@ export class MongooseClientRepository implements ClientRepository {
     throw new Error('Method not implemented.');
   }
   async findAll(): Promise<IClient[]> {
-    throw new Error('Method not implemented.');
+    return await this.clientModel.find();
   }
   async findById(id: string): Promise<IClient> {
     throw new Error('Method not implemented.');
