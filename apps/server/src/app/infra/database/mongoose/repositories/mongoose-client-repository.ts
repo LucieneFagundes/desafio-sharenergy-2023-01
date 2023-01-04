@@ -8,8 +8,8 @@ import { Model } from 'mongoose';
 @Injectable()
 export class MongooseClientRepository implements ClientRepository {
   constructor(
-    @InjectModel(Client.name) private clientModel: Model<ClientDocument>,
-  ) { }
+    @InjectModel(Client.name) private clientModel: Model<ClientDocument>
+  ) {}
 
   async create(client: Client): Promise<void> {
     await this.clientModel.create(client);
@@ -18,7 +18,7 @@ export class MongooseClientRepository implements ClientRepository {
     throw new Error('Method not implemented.');
   }
   async exclude(id: string): Promise<void> {
-    throw new Error('Method not implemented.');
+    await this.clientModel.deleteOne({ _id: id });
   }
   async findAll(): Promise<IClient[]> {
     return await this.clientModel.find();
