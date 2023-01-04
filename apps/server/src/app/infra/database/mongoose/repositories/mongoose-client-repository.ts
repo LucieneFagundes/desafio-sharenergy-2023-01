@@ -24,7 +24,7 @@ export class MongooseClientRepository implements ClientRepository {
     return await this.clientModel.find();
   }
   async findById(id: string): Promise<IClient> {
-    throw new Error('Method not implemented.');
+    return this.clientModel.findById(id);
   }
   async findByEmail(email: string): Promise<Client> {
     return this.clientModel.findOne({ email });

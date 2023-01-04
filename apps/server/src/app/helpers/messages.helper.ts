@@ -6,4 +6,6 @@ export const MessagesHelper = {
 
   EMAIL_ALREADY_EXISTENT: 'Este e-mail já está em uso',
   CPF_ALREADY_EXISTENT: 'Este CPF já está em uso',
+
+  NOT_FOUND: "Desculpe, não encontramos o que você procura"
 };

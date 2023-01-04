@@ -5,10 +5,16 @@ import { CreateUserUseCase } from '@application/use-cases/users-use-case/create-
 import { CreateClientUseCase } from '@application/use-cases/clients-use-case/create-client-use-case';
 import { ClientController } from './controllers/client.controller';
 import { FindAllClientsUseCase } from '@application/use-cases/clients-use-case/find-all-client-use-case';
+import { FindOneClientUseCase } from '@application/use-cases/clients-use-case/find-one-client-use-case';
 
 @Module({
   imports: [DatabaseModule],
   controllers: [UsersController, ClientController],
-  providers: [CreateUserUseCase, CreateClientUseCase, FindAllClientsUseCase],
+  providers: [
+    CreateUserUseCase,
+    CreateClientUseCase,
+    FindAllClientsUseCase,
+    FindOneClientUseCase
+  ],
 })
 export class HttpModule { }
