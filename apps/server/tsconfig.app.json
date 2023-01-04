@@ -1,0 +1,35 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": [
+      "node"
+    ],
+    "emitDecoratorMetadata": true,
+    "target": "es2015",
+    "baseUrl": "./",
+    "paths": {
+      "@application/*": [
+        "./src/app/application/*"
+      ],
+      "@helpers/*": [
+        "./src/app/helpers/*"
+      ],
+      "@infra/*": [
+        "./src/app/infra/*"
+      ],
+      "@test/*": [
+        "./test/*"
+      ]
+    }
+  },
+  "exclude": [
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}
