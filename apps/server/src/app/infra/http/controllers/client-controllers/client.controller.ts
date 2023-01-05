@@ -12,8 +12,8 @@ import {
   Delete,
   Put,
 } from '@nestjs/common';
-import { CreateClientDto } from './dtos/create-client.dto';
-import { UpdateClientDto } from './dtos/update-client.dto';
+import { CreateClientDto } from '../../dtos/create-client.dto';
+import { UpdateClientDto } from '../../dtos/update-client.dto';
 
 @Controller('clients')
 export class ClientController {
