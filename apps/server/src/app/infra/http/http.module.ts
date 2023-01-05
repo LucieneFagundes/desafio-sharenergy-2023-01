@@ -7,6 +7,7 @@ import { ClientController } from './controllers/client.controller';
 import { FindAllClientsUseCase } from '@application/use-cases/clients-use-case/find-all-client-use-case';
 import { FindOneClientUseCase } from '@application/use-cases/clients-use-case/find-one-client-use-case';
 import { DeleteClientUseCase } from '@application/use-cases/clients-use-case/delete-client-use-case';
+import { UpdateClientUseCase } from '@application/use-cases/clients-use-case/update-client-use-case';
 
 @Module({
   imports: [DatabaseModule],
@@ -17,6 +18,7 @@ import { DeleteClientUseCase } from '@application/use-cases/clients-use-case/del
     FindAllClientsUseCase,
     FindOneClientUseCase,
     DeleteClientUseCase,
+    UpdateClientUseCase,
   ],
 })
 export class HttpModule {}

@@ -14,8 +14,9 @@ export class MongooseClientRepository implements ClientRepository {
   async create(client: Client): Promise<void> {
     await this.clientModel.create(client);
   }
-  async update(client: IClient): Promise<IClient> {
-    throw new Error('Method not implemented.');
+  async update(id: string, client: IClient): Promise<IClient> {
+    const result = await this.clientModel.findByIdAndUpdate(id, client);
+    return result;
   }
   async exclude(id: string): Promise<void> {
     await this.clientModel.deleteOne({ _id: id });

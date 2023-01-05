@@ -2,8 +2,18 @@ import { CreateClientUseCase } from '@application/use-cases/clients-use-case/cre
 import { DeleteClientUseCase } from '@application/use-cases/clients-use-case/delete-client-use-case';
 import { FindAllClientsUseCase } from '@application/use-cases/clients-use-case/find-all-client-use-case';
 import { FindOneClientUseCase } from '@application/use-cases/clients-use-case/find-one-client-use-case';
-import { Body, Controller, Get, Post, Param, Delete } from '@nestjs/common';
+import { UpdateClientUseCase } from '@application/use-cases/clients-use-case/update-client-use-case';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { CreateClientDto } from './dtos/create-client.dto';
+import { UpdateClientDto } from './dtos/update-client.dto';
 
 @Controller('clients')
 export class ClientController {
@@ -11,7 +21,8 @@ export class ClientController {
     private createClient: CreateClientUseCase,
     private findAll: FindAllClientsUseCase,
     private findOne: FindOneClientUseCase,
-    private deleteClient: DeleteClientUseCase
+    private deleteClient: DeleteClientUseCase,
+    private updateClient: UpdateClientUseCase
   ) {}
 
   @Get()
@@ -28,6 +39,11 @@ export class ClientController {
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.deleteClient.execute(id);
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateClientDto) {
+    const result = await this.updateClient.execute(id, body);
   }
 
   @Post()
