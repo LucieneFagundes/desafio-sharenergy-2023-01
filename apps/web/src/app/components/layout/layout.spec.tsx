@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import RandomUsers from './random-users';
+import Layout from './layout';
 
-describe('RandomUsers', () => {
+describe('Layout', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<RandomUsers />);
+    const { baseElement } = render(<Layout />);
     expect(baseElement).toBeTruthy();
   });
 });

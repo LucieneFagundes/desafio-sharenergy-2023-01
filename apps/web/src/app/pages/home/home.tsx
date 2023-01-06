@@ -8,7 +8,6 @@ export interface HomeProps {}
 export function Home(props: HomeProps) {
   return (
     <>
-      <Navbar />;
       <Clients />
     </>
   );
