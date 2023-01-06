@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
+import { Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { IRandomUser } from './random-user.interface';
 
@@ -8,15 +8,23 @@ export class RandomUserService {
   constructor(private readonly httpService: HttpService) {}
 
   async findAll(
+    page: number = 1,
     fields?: string,
-    size: number = 10,
-    page: number = 1
+    size: number = 5
   ): Promise<IRandomUser[]> {
-    const { data } = await firstValueFrom(
+    var data = [];
+    fields = 'name,email,login,dob,picture';
+
+    await firstValueFrom(
       this.httpService.get(
-        `https://randomuser.me/api/?results=${size}&inc=${fields}&page=${page}`
+        `https://randomuser.me/api/?results=${size}&inc=${fields}&page=${page}`,
+        {
+          headers: { 'Accept-Encoding': 'gzip,deflate,compress' },
+        }
       )
-    );
+    )
+      .then((response) => (data = response.data))
+      .catch((error) => console.log(error));
     return data;
   }
 }

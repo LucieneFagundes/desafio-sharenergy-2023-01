@@ -9,6 +9,7 @@ mongoose.set('strictQuery', false);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
+  app.enableCors();
   app.setGlobalPrefix(globalPrefix);
   const port = environment.PORT || 3333;
   await app.listen(port);
