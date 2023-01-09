@@ -11,10 +11,17 @@ import { UpdateClientUseCase } from '@application/use-cases/clients-use-case/upd
 import { RandomUserModule } from '@infra/external-api/random-user/random-user.module';
 import { RandomUserController } from './controllers/external-controllers/random-user/random-user.controller';
 import { RandomUserService } from '@infra/external-api/random-user/random-user.service';
+import { HttpCatController } from './controllers/external-controllers/http-cat/http-cat.controller';
+import { HttpCatModule } from '@infra/external-api/http-cats/http-cat.module';
 
 @Module({
-  imports: [DatabaseModule, RandomUserModule],
-  controllers: [UsersController, ClientController, RandomUserController],
+  imports: [DatabaseModule, RandomUserModule, HttpCatModule],
+  controllers: [
+    UsersController,
+    ClientController,
+    RandomUserController,
+    HttpCatController,
+  ],
   providers: [
     CreateUserUseCase,
     CreateClientUseCase,

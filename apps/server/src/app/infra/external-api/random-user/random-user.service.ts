@@ -1,13 +1,13 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
-import { IRandomUser } from './random-user.interface';
+import { IRandomUser } from '../dtos/random-user.interface';
 
 @Injectable()
 export class RandomUserService {
   constructor(private readonly httpService: HttpService) {}
 
-  async findAll(
+  async execute(
     page: number = 1,
     fields?: string,
     size: number = 5

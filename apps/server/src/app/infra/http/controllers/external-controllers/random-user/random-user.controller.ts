@@ -1,4 +1,4 @@
-import { IRandomUser } from '@infra/external-api/random-user/random-user.interface';
+import { IRandomUser } from '@infra/external-api/dtos/random-user.interface';
 import { RandomUserService } from '@infra/external-api/random-user/random-user.service';
 import { Controller, Get, Param, Res } from '@nestjs/common';
 
@@ -8,7 +8,7 @@ export class RandomUserController {
 
   @Get(':page')
   async getRandomUser(@Res() res: any, @Param('page') page: number) {
-    const result = await this.randomUserService.findAll(page);
+    const result = await this.randomUserService.execute(page);
     return res.json(result);
   }
 }

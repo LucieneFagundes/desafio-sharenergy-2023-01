@@ -9,7 +9,7 @@ export interface LayoutProps {
 
 const navigation = [
   { name: 'Random User', href: '/random-users', current: true },
-  { name: 'HTTP Gatos', href: '/http-cats', current: false },
+  { name: 'HTTP Cat', href: '/http-cats', current: false },
   { name: 'Random Dog', href: '/random-dogs', current: false },
   { name: 'Clientes', href: '/clients', current: false },
 ];
@@ -169,11 +169,7 @@ export function Layout({ children, title }: LayoutProps) {
         </div>
       </header>
       <main>
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          {/* Replace with your content */}
-          <div className="px-4 py-2 sm:px-0">{children}</div>
-          {/* /End replace */}
-        </div>
+        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{children}</div>
       </main>
     </div>
   );
