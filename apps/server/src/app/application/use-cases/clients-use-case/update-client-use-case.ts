@@ -8,9 +8,10 @@ import {
 import { isValidObjectId } from 'mongoose';
 
 type UpdateRequest = {
+  id: string;
   name?: string;
   email?: string;
-  phone_number?: number;
+  phone?: string;
   address?: string;
   cpf?: string;
 };
@@ -19,29 +20,29 @@ type UpdateRequest = {
 export class UpdateClientUseCase {
   constructor(private clientRepository: ClientRepository) {}
 
-  async execute(id: string, client: UpdateRequest) {
-    if (!isValidObjectId(id)) {
+  async execute(_id: string, client: UpdateRequest) {
+    if (!isValidObjectId(_id)) {
       throw new NotFoundException(MessagesHelper.NOT_FOUND);
     }
 
-    const { name, email, phone_number, address, cpf } = client;
+    const { id, name, email, phone, address, cpf } = client;
 
     const emailAlreadyExists = await this.clientRepository.findByEmail(email);
 
-    if (emailAlreadyExists) {
+    if (emailAlreadyExists && emailAlreadyExists.id !== _id) {
       throw new BadRequestException(MessagesHelper.EMAIL_ALREADY_EXISTENT);
     }
 
     const cpfAlreadyExists = await this.clientRepository.findByCpf(cpf);
 
-    if (cpfAlreadyExists) {
+    if (cpfAlreadyExists && cpfAlreadyExists.id !== _id) {
       throw new BadRequestException(MessagesHelper.CPF_ALREADY_EXISTENT);
     }
 
-    const result = await this.clientRepository.update(id, {
+    const result = await this.clientRepository.update(_id, {
       name,
       email,
-      phone_number,
+      phone,
       address,
       cpf,
     });

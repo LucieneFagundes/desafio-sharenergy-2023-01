@@ -6,17 +6,17 @@ import { Injectable } from '@nestjs/common/decorators';
 type CreateRequest = {
   name: string;
   email: string;
-  phone_number: number;
+  phone: string;
   address: string;
   cpf: string;
 };
 
 @Injectable()
 export class CreateClientUseCase {
-  constructor(private clientRepository: ClientRepository) { }
+  constructor(private clientRepository: ClientRepository) {}
 
   async execute(data: CreateRequest): Promise<void> {
-    const { name, email, phone_number, address, cpf } = data;
+    const { name, email, phone, address, cpf } = data;
 
     const emailAlreadyExists = await this.clientRepository.findByEmail(email);
 
@@ -35,7 +35,7 @@ export class CreateClientUseCase {
     await this.clientRepository.create({
       name,
       email,
-      phone_number,
+      phone,
       address,
       cpf,
     });

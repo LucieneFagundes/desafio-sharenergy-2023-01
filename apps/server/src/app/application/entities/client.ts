@@ -10,7 +10,7 @@ export class Client {
   @Prop({ unique: true })
   email: string;
   @Prop()
-  phone_number: number;
+  phone: string;
   @Prop()
   address: string;
   @Prop({ unique: true })

@@ -9,6 +9,8 @@ import RandomUsers from './pages/random-users/random-users';
 import RandomDogs from './pages/random-dogs/random-dogs';
 import HttpCats from './pages/http-cats/http-cats';
 import Clients from './pages/clients/clients';
+import NewClient from './pages/new-client/new-client';
+import Client from './pages/clients/client/client';
 
 export function App() {
   return (
@@ -21,6 +23,8 @@ export function App() {
         <Route path="/http-cats" element={<HttpCats />} />
         <Route path="/random-dogs" element={<RandomDogs />} />
         <Route path="/clients" element={<Clients />} />
+        <Route path="/clients/:id" element={<Client />} />
+        <Route path="/new-client" element={<NewClient />} />
       </Routes>
     </BrowserRouter>
   );

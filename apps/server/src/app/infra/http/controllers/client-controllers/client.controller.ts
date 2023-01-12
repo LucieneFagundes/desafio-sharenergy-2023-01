@@ -33,7 +33,8 @@ export class ClientController {
 
   @Get(':id')
   async getOne(@Param('id') id: string) {
-    return this.findOne.execute(id);
+    const result = this.findOne.execute(id);
+    return result;
   }
 
   @Delete(':id')
@@ -49,15 +50,15 @@ export class ClientController {
   @Post()
   async create(@Body() body: CreateClientDto) {
     //TODO: Retornar mensagem de sucesso
-    const { name, email, phone_number, address, cpf } = body;
+    const { name, email, phone, address, cpf } = body;
     const response = await this.createClient.execute({
       name,
       email,
-      phone_number,
+      phone,
       address,
       cpf,
     });
 
-    return;
+    return response;
   }
 }
