@@ -1,4 +1,4 @@
-import { createClientRequest } from 'apps/web/src/services/clients/clients.service';
+import { createClientRequest } from '../../services/clients/clients.service';
 import ClientForm from '../../components/client-form/client-form';
 import Layout from '../../components/layout/layout';
 

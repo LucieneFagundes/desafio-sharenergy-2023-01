@@ -1,7 +1,7 @@
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
-import { getHttpCatRequest } from 'apps/web/src/services/http-cat/http-cat.service';
-import { ChangeEventHandler, useState } from 'react';
+import { useState } from 'react';
 import Layout from '../../components/layout/layout';
+import { getHttpCatRequest } from '../../services/http-cat/http-cat.service';
 
 export interface HttpCatsProps {}
 

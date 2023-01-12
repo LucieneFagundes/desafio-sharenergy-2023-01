@@ -1,5 +1,3 @@
-import styles from './register.module.css';
-
 export function Register() {
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -1,8 +1,8 @@
-import { getRandomUser } from 'apps/web/src/services/random-user/random-user.service';
 import { useEffect, useState } from 'react';
 import Layout from '../../components/layout/layout';
 import Pagination from '../../components/pagination/pagination';
 import Table from '../../components/table/table';
+import { getRandomUser } from '../../services/random-user/random-user.service';
 
 export interface RandomUsersProps {}
 
@@ -39,18 +39,24 @@ export function RandomUsers(props: RandomUsersProps) {
     { field: 'picture', header: 'Foto' },
     { field: 'name', header: 'Nome' },
     { field: 'email', header: 'E-mail' },
-    { field: 'login', header: 'Username' },
+    { field: 'login', header: 'Usuário' },
     { field: 'dob', header: 'Idade' },
   ];
 
   return (
     <>
       <Layout title="Random User">
-        <Table data={randomUser} columns={columns} />
-        <Pagination
-          page={userInfo?.page}
-          onPageChange={(page) => getRandomUserPagination(page)}
-        />
+        {randomUser ? (
+          <>
+            <Table data={randomUser} columns={columns} />
+            <Pagination
+              page={userInfo?.page}
+              onPageChange={(page) => getRandomUserPagination(page)}
+            />
+          </>
+        ) : (
+          <div>Loading</div>
+        )}
       </Layout>
     </>
   );

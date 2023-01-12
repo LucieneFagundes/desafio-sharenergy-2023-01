@@ -1,11 +1,11 @@
-import {
-  getClientRequest,
-  updateClientRequest,
-} from 'apps/web/src/services/clients/clients.service';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ClientForm from '../../../components/client-form/client-form';
 import Layout from '../../../components/layout/layout';
+import {
+  getClientRequest,
+  updateClientRequest,
+} from '../../../services/clients/clients.service';
 
 export interface ClientProps {}
 

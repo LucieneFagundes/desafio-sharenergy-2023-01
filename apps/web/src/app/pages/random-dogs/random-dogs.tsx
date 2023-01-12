@@ -1,7 +1,6 @@
-import styles from './random-dogs.module.css';
 import { useState } from 'react';
 import Layout from '../../components/layout/layout';
-import { getRandomDogRequest } from 'apps/web/src/services/random-dog/random-dog.service';
+import { getRandomDogRequest } from '../../services/random-dog/random-dog.service';
 
 export interface RandomDogsProps {}
 

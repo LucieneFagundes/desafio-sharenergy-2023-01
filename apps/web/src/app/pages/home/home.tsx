@@ -1,4 +1,3 @@
-import Navbar from '../../components/navbar/navbar';
 import Clients from '../clients/clients';
 import styles from './home.module.css';
 

@@ -1,11 +1,11 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
-import {
-  deleteClientRequest,
-  getAllClientsRequest,
-} from 'apps/web/src/services/clients/clients.service';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/layout/layout';
+import {
+  deleteClientRequest,
+  getAllClientsRequest,
+} from '../../services/clients/clients.service';
 
 interface IClient {
   _id: string;
