@@ -1,6 +1,6 @@
-import { api } from '../api';
+import axios from 'axios';
 
 export async function getRandomDogRequest() {
-  const dog = await api.get('https://random.dog/woof.json?filter=mp4,webm');
+  const dog = await axios.get('https://random.dog/woof.json?filter=mp4,webm');
   return dog.data.url;
 }
