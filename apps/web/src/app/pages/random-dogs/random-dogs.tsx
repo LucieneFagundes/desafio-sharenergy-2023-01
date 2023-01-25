@@ -5,13 +5,14 @@ import { getRandomDogRequest } from '../../services/random-dog/random-dog.servic
 export interface RandomDogsProps {}
 
 export function RandomDogs(props: RandomDogsProps) {
-  const [dog, setDog] = useState('');
+  const [dog, setDog] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   async function handleRefresh() {
-    setDog('');
+    setLoading(true);
     let dog = await getRandomDogRequest();
-    console.log(dog);
     setDog(dog);
+    setLoading(false);
   }
 
   return (
@@ -24,9 +25,19 @@ export function RandomDogs(props: RandomDogsProps) {
           >
             Refresh
           </button>
-          <div className="flex justify-center m-2 ">
-            <img src={dog} className="flex object-fill rounded-lg" />
-          </div>
+          {dog ? (
+            <div>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <div className="flex justify-center m-2 ">
+                  <img src={dog} className="flex object-fill rounded-lg" />
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>Clique no botão</div>
+          )}
         </div>
       </Layout>
     </>

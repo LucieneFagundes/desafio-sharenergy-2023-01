@@ -1,15 +1,16 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
-/* eslint-disable-next-line */
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth-context';
+
 export interface LayoutProps {
   children: React.ReactNode;
   title: string;
 }
 
 const navigation = [
-  { name: 'Random User', href: '/random-users', current: true },
+  { name: 'Random User', href: '/random-users', current: false },
   { name: 'HTTP Cat', href: '/http-cats', current: false },
   { name: 'Random Dog', href: '/random-dogs', current: false },
   { name: 'Clientes', href: '/clients', current: false },
@@ -20,9 +21,18 @@ function classNames(...classes: string[]) {
 }
 
 export function Layout({ children, title }: LayoutProps) {
-  const navigate = useNavigate();
+  const { logOut } = useContext(AuthContext);
+
   function signOut() {
-    navigate('/login');
+    logOut();
+  }
+
+  function changeCurrent(i: any) {
+    navigation.forEach((nav) => {
+      nav.current = false;
+    });
+
+    navigation[i].current = !navigation[i].current;
   }
 
   return (
@@ -58,10 +68,11 @@ export function Layout({ children, title }: LayoutProps) {
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
-                      {navigation.map((item) => (
-                        <a
+                      {navigation.map((item, i) => (
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
+                          onClick={() => changeCurrent(i)}
                           className={classNames(
                             item.current
                               ? 'bg-gray-900 text-white'
@@ -71,7 +82,7 @@ export function Layout({ children, title }: LayoutProps) {
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -102,7 +113,6 @@ export function Layout({ children, title }: LayoutProps) {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
@@ -115,7 +125,6 @@ export function Layout({ children, title }: LayoutProps) {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'

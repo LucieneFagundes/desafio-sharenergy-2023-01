@@ -8,6 +8,7 @@ export interface HttpCatsProps {}
 export function HttpCats(props: HttpCatsProps) {
   const [code, setCode] = useState(0);
   const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(true);
 
   function handleChange(event?: any) {
     event.target.value == '' ? setCode(0) : setCode(event.target.value);
