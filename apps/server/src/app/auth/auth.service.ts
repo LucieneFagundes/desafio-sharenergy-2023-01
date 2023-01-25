@@ -14,7 +14,7 @@ interface UserRequest {
 export class AuthService {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService
   ) {}
 
   async login(user: UserRequest) {
@@ -30,14 +30,14 @@ export class AuthService {
 
     if (!user) {
       throw new UnauthorizedException(
-        MessagesHelper.USERNAME_OR_PASSWORD_INVALID,
+        MessagesHelper.USERNAME_OR_PASSWORD_INVALID
       );
     }
 
     const passwordMatch = compareSync(password, user.password);
     if (!passwordMatch) {
       throw new UnauthorizedException(
-        MessagesHelper.USERNAME_OR_PASSWORD_INVALID,
+        MessagesHelper.USERNAME_OR_PASSWORD_INVALID
       );
     }
 

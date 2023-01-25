@@ -1,7 +1,9 @@
 import { HttpCatService } from '@infra/external-api/http-cats/http-cat.service';
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { Get, Param } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('http-cat')
 export class HttpCatController {
   constructor(private httpCatService: HttpCatService) {}
